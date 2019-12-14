@@ -11,7 +11,9 @@ class UiConfiguration : WebMvcConfigurer {
             .addResourceLocations(
                 // THESE TWO DON'T WORK WITHOUT EACH OTHER, DON'T TOUCH IT
                 "classpath:/css",
-                "classpath:/static/css"
+                "classpath:/static/css",
+
+                "classpath:/static/js"
             )
             .setCachePeriod(0)
     }
