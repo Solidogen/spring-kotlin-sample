@@ -8,8 +8,7 @@ import org.springframework.boot.runApplication
 class SpringKotlinSampleApplication
 
 fun main(args: Array<String>) {
-	runApplication<SpringKotlinSampleApplication>(*args) {
-		setBannerMode(Banner.Mode.OFF)
-	}
-	println("XD")
+    runApplication<SpringKotlinSampleApplication>(*args) {
+        setBannerMode(Banner.Mode.OFF)
+    }
 }
