@@ -1,11 +1,11 @@
-package com.spyrdonapps.springkotlinsample.model
+package com.spyrdonapps.springkotlinsample.model.entity
 
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 
 @Entity
-class User(
+class UserEntity(
     var login: String,
     var firstName: String,
     var lastName: String,

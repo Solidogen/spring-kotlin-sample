@@ -1,7 +1,7 @@
 package com.spyrdonapps.springkotlinsample
 
-import com.spyrdonapps.springkotlinsample.model.Article
-import com.spyrdonapps.springkotlinsample.model.User
+import com.spyrdonapps.springkotlinsample.model.entity.ArticleEntity
+import com.spyrdonapps.springkotlinsample.model.entity.UserEntity
 import com.spyrdonapps.springkotlinsample.repository.ArticleRepository
 import com.spyrdonapps.springkotlinsample.repository.UserRepository
 import org.assertj.core.api.Assertions.assertThat
@@ -20,9 +20,18 @@ class RepositoriesTests @Autowired constructor(
 
     @Test
     fun `When findByIdOrNull then return Article`() {
-        val juergen = User("springjuergen", "Juergen", "Hoeller")
+        val juergen = UserEntity(
+            "springjuergen",
+            "Juergen",
+            "Hoeller"
+        )
         entityManager.persist(juergen)
-        val article = Article("Spring Framework 5.0 goes GA", "Dear Spring community ...", "Lorem ipsum", juergen)
+        val article = ArticleEntity(
+            "Spring Framework 5.0 goes GA",
+            "Dear Spring community ...",
+            "Lorem ipsum",
+            juergen
+        )
         entityManager.persist(article)
         entityManager.flush()
         val found = articleRepository.findByIdOrNull(article.id!!)
@@ -31,7 +40,11 @@ class RepositoriesTests @Autowired constructor(
 
     @Test
     fun `When findByLogin then return User`() {
-        val juergen = User("springjuergen", "Juergen", "Hoeller")
+        val juergen = UserEntity(
+            "springjuergen",
+            "Juergen",
+            "Hoeller"
+        )
         entityManager.persist(juergen)
         entityManager.flush()
         val user = userRepository.findByLogin(juergen.login)
