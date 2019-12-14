@@ -1,4 +1,4 @@
-package com.spyrdonapps.springkotlinsample.controller
+package com.spyrdonapps.springkotlinsample.controller.ui
 
 import com.spyrdonapps.springkotlinsample.model.mapper.toUiModel
 import com.spyrdonapps.springkotlinsample.repository.ArticleRepository
@@ -11,14 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.server.ResponseStatusException
 
 @Controller
-class HtmlController(private val repository: ArticleRepository) {
-
-    @GetMapping("/")
-    fun blog(model: Model): String {
-        model["title"] = "Blog"
-        model["articles"] = repository.findAllByOrderByAddedAtDesc().map { it.toUiModel() }
-        return "blog"
-    }
+class ArticleUiController(private val repository: ArticleRepository) {
 
     @GetMapping("/article/{slug}")
     fun article(@PathVariable slug: String, model: Model): String {
